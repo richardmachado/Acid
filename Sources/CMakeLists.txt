@@ -73,6 +73,25 @@ if(NOT TARGET glfw)
 	set_target_properties(glfw PROPERTIES FOLDER External)
 endif()
 
+find_package(Freetype 2.9.1 QUIET)
+if(NOT Freetype_FOUND)
+	FetchContent_Declare(freetype
+			URL https://download.savannah.gnu.org/releases/freetype/freetype-2.10.1.tar.gz
+			URL_MD5 c50a3c9e5e62bdc938a6e1598a782947
+			)
+	FetchContent_GetProperties(freetype)
+	if(NOT freetype_POPULATED)
+		set(CMAKE_DISABLE_FIND_PACKAGE_ZLIB TRUE)
+		set(CMAKE_DISABLE_FIND_PACKAGE_BZip2 TRUE)
+		set(CMAKE_DISABLE_FIND_PACKAGE_PNG TRUE)
+		set(CMAKE_DISABLE_FIND_PACKAGE_HarfBuzz TRUE)
+		FetchContent_Populate(freetype)
+		add_subdirectory(${freetype_SOURCE_DIR} ${freetype_BINARY_DIR})
+		set_target_properties(freetype PROPERTIES FOLDER External)
+	endif()
+	set(FREETYPE_LIBRARIES "freetype")
+endif()
+
 # TODO: Prebuilt glslang binaries are unreliable between systems
 #find_package(glslang QUIET)
 if(NOT glslang_FOUND)
@@ -259,6 +278,7 @@ target_link_libraries(Acid
 		# More IMPORTED
 		OpenAL::OpenAL
 		glfw
+		${FREETYPE_LIBRARIES}
 		${GLSLANG_LIBRARIES}
 		${BULLET_LIBRARIES}
 		${PHYSFS_LIBRARY}
