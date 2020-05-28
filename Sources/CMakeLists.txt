@@ -76,8 +76,8 @@ endif()
 find_package(Freetype 2.9.1 QUIET)
 if(NOT Freetype_FOUND)
 	FetchContent_Declare(freetype
-			URL https://download.savannah.gnu.org/releases/freetype/freetype-2.10.1.tar.gz
-			URL_MD5 c50a3c9e5e62bdc938a6e1598a782947
+			URL https://download.savannah.gnu.org/releases/freetype/freetype-2.10.2.tar.gz
+			URL_MD5 b1cb620e4c875cd4d1bfa04945400945
 			)
 	FetchContent_GetProperties(freetype)
 	if(NOT freetype_POPULATED)
@@ -260,6 +260,7 @@ target_include_directories(Acid
 		PRIVATE
 		# Since building locally from the submodules won't always create these vars.
 		# We have to do a simple check if they exist or they will cause errors
+		$<$<BOOL:${FREETYPE_INCLUDE_DIRS}>:${FREETYPE_INCLUDE_DIRS}>
 		$<$<BOOL:${GLSLANG_INCLUDE_DIRS}>:${GLSLANG_INCLUDE_DIRS}>
 		$<$<BOOL:${BULLET_INCLUDE_DIRS}>:${BULLET_INCLUDE_DIRS}>
 		$<$<BOOL:${PHYSFS_INCLUDE_DIR}>:${PHYSFS_INCLUDE_DIR}>

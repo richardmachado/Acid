@@ -17,7 +17,7 @@ enum class InputAction : int32_t {
 	Repeat = 2
 };
 
-ENABLE_BITMASK_OPERATORS(InputAction);
+ENABLE_BITMASK_OPERATORS(InputAction)
 
 enum class InputMod : int32_t {
 	None = 0,
@@ -27,7 +27,7 @@ enum class InputMod : int32_t {
 	Super = 8
 };
 
-ENABLE_BITMASK_OPERATORS(InputMod);
+ENABLE_BITMASK_OPERATORS(InputMod)
 
 /**
  * @brief Module used for managing a window.

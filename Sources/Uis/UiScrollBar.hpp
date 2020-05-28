@@ -11,7 +11,7 @@ enum class ScrollBar {
 	Both = Vertical | Horizontal
 };
 
-ENABLE_BITMASK_OPERATORS(ScrollBar);
+ENABLE_BITMASK_OPERATORS(ScrollBar)
 
 class ACID_EXPORT UiScrollBar : public UiObject {
 public:

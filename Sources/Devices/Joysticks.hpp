@@ -13,7 +13,7 @@ enum class JoystickHatValue : uint8_t {
 	Left = 8
 };
 
-ENABLE_BITMASK_OPERATORS(JoystickHatValue);
+ENABLE_BITMASK_OPERATORS(JoystickHatValue)
 
 using JoystickPort = uint8_t;
 using JoystickAxis = uint8_t;

@@ -13,7 +13,7 @@ enum class UiManipulate {
 	All = Resize | Move
 };
 
-ENABLE_BITMASK_OPERATORS(UiManipulate);
+ENABLE_BITMASK_OPERATORS(UiManipulate)
 
 class ACID_EXPORT UiPanel : public UiObject {
 public:
